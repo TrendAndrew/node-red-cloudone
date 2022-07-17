@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('cloudone service', {
+        category: 'config',
+        color: '#F0F3F5',
+        defaults: {
+            name: { value : "", required: false },
+            region: { value : "", required: false },
+            server: { value : "", required: false }
+        },
+        credentials: {
+            apikey: { type:"password", required: true }
+        },
+        icon: "trendmicro.png",
+        label: function() {
+            return this.name || "CloudOne Service";
+        },
+        paletteLabel: 'CloudOne Service'
+    });
+</script>
+
+<script type="text/x-red" data-template-name="cloudone service">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-region"><i class="fa fa-server"></i> Region</label>
+        <input type="text" id="node-config-input-region" placeholder="us-1" readonly>
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-server"><i class="fa fa-server"></i> Server</label>
+        <input type="text" id="node-config-input-server" placeholder="CloudOne Service" readonly>
+    </div>
+    
+    <div style="margin-left: 20px; display: block;" class="node-config-input-trendmicroAuth-row">
+        <div class="form-row">
+            <label for="node-config-input-apikey"><i class="fa fa-lock"></i>
+            <span data-i18n="node-red:common.label.secret">API Key</span></label>
+            <input type="password" id="node-config-input-apikey">
+        </div>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="cloudone service">
+    <p></p>
+</script>

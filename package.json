@@ -1,0 +1,50 @@
+{
+  "name": "node-red-contrib-trendmicro-cloudone",
+  "version": "0.1",
+  "description": "Trend Micro CloudOne base nodes for Node-RED",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "list integrations": "cloudone/listintegrations.js",
+      "cloudone service": "cloudone/cloudone.js"
+    }
+  },
+  "repository": "github:Anamico/node-red-contrib-trendmicro-cloudone",
+  "author": {
+    "name": "Andrew Longhorn",
+    "email": "Andrew_Longhorn@TrendMicro.com",
+    "url": "https://www.linkedin.com/in/andrewlonghorn/"
+  },
+  "contributors": [
+    {
+      "name": "Andrew Longhorn",
+      "email": "Andrew_Longhorn@TrendMicro.com",
+      "url": "https://www.linkedin.com/in/andrewlonghorn/"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://flows.nodered.org/node/node-red-trendmicro-cloudone",
+  "bugs": "https://github.com/Anamico/node-red-trendmicro-cloudone/issues",
+  "dependencies": {
+    "async": "^3.2.4",
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
+  },
+  "keywords": [
+    "trendmicro",
+    "cloudone",
+    "security",
+    "node-red",
+    "threat",
+    "automation"
+  ],
+  "maintainers": [
+    {
+      "name": "Andrew Longhorn",
+      "email": "Andrew_Longhorn@TrendMicro.com"
+    }
+  ]
+}
