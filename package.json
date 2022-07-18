@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-trendmicro-cloudone",
+  "name": "@trendmicro/node-red-cloudone",
   "version": "0.1.0",
   "description": "Trend Micro CloudOne base nodes for Node-RED",
   "main": "index.js",
@@ -12,7 +12,7 @@
       "cloudone service": "cloudone/cloudone.js"
     }
   },
-  "repository": "github:Anamico/node-red-contrib-trendmicro-cloudone",
+  "repository": "github:TrendAndrew/node-red-contrib-trendmicro-cloudone",
   "author": {
     "name": "Andrew Longhorn",
     "email": "Andrew_Longhorn@TrendMicro.com",
@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "homepage": "https://flows.nodered.org/node/node-red-trendmicro-cloudone",
-  "bugs": "https://github.com/Anamico/node-red-trendmicro-cloudone/issues",
+  "bugs": "https://github.com/TrendAndrew/node-red-trendmicro-cloudone/issues",
   "dependencies": {
     "async": "^3.2.4",
     "request": "^2.88.2",
