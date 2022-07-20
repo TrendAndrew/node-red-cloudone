@@ -11,12 +11,12 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             node._cloudone.call(node, {
                 method: "GET",
-                uri: "https://integrations.us-1.cloudone.trendmicro.com/api/integrations",
+                uri: "https://integrations.{{region}}.cloudone.trendmicro.com/api/integrations",
                 headers: {
                     'Api-Version': 'v1'
                 }
             }, null, function(body) {
-                console.log(body.integrations);
+                node.debug(body.integrations);
                 if (!body || !body.integrations) {
                     node.status({ fill:"red", shape:"ring", text:"Response Error, Missing 'integrations'." });
                     return;
@@ -24,7 +24,7 @@ module.exports = function(RED) {
                 const count = body.integrations.length;
                 node.status({ fill:"green", shape:"dot", text:"Listed " + count + ' integration' + (count === 1 ? '' : 's')});
                 node.send({
-                    payload: body
+                    payload: body.integrations
                 });
             });
         });

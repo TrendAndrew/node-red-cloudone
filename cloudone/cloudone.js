@@ -1,4 +1,5 @@
 'use strict';
+const Mustache = require('mustache');
 const util = require('./util.js');
 
 module.exports = function(RED) {
@@ -7,7 +8,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var serverNode = this;
         const apikey = serverNode.credentials.apikey;
-        const region = serverNode.region;
+        const region = serverNode.region || 'us-1';
         const server = serverNode.server;
 
         serverNode.call = function(node, params, onError, onSuccess) {
@@ -26,6 +27,10 @@ module.exports = function(RED) {
             // }
 
             const callParams = Object.assign({}, params, {
+                uri: Mustache.render(params.uri, {
+                    server: server,
+                    region: region
+                }),
                 json: true,
                 headers: Object.assign({}, params.headers || {}, {
                     'Authorization': 'ApiKey ' + apikey
