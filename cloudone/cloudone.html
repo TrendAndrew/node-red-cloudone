@@ -4,11 +4,16 @@
         color: '#F0F3F5',
         defaults: {
             name: { value : "", required: false },
-            region: { value : "", required: false },
-            server: { value : "", required: false }
+            region: { value : "us-1", required: true },
+            server: { value : "", required: false },
+            proxyAddress: { value : "", required: false },
+            proxyProtocol: { value : "", required: false },
+            proxyPort: { value : "", required: false }
         },
         credentials: {
-            apikey: { type:"password", required: true }
+            apikey: { type:"password", required: true },
+            proxyUsername: { type:"text", required: false },
+            proxyPassword: { type:"password", required: false }
         },
         icon: "trendmicro.png",
         label: function() {
@@ -25,23 +30,63 @@
     </div>
 
     <div class="form-row">
-        <label for="node-config-input-region"><i class="fa fa-server"></i> Region</label>
-        <input type="text" id="node-config-input-region" placeholder="us-1" readonly>
+        <label for="node-config-input-apikey"><i class="fa fa-lock"></i>
+        <span data-i18n="node-red:common.label.secret">API Key</span></label>
+        <input type="password" id="node-config-input-apikey">
     </div>
 
     <div class="form-row">
         <label for="node-config-input-server"><i class="fa fa-server"></i> Server</label>
-        <input type="text" id="node-config-input-server" placeholder="CloudOne Service" readonly>
-    </div>
-    
-    <div style="margin-left: 20px; display: block;" class="node-config-input-trendmicroAuth-row">
-        <div class="form-row">
-            <label for="node-config-input-apikey"><i class="fa fa-lock"></i>
-            <span data-i18n="node-red:common.label.secret">API Key</span></label>
-            <input type="password" id="node-config-input-apikey">
-        </div>
+        <input type="text" id="node-config-input-server" placeholder="https://{{service}}.{{region}}.cloudone.trendmicro.com/api/" readonly>
     </div>
 
+    <div class="form-row">
+        <label for="node-config-input-region"><i class="fa fa-globe"></i> Region</label>
+        <select id="node-config-input-region">
+            <option value='au-1'>au-1</option>
+            <option value='ca-1'>ca-1</option>
+            <option value='de-1'>de-1</option>
+            <option value='gb-1'>gb-1</option>
+            <option value='in-1'>in-1</option>
+            <option value='jp-1'>jp-1</option>
+            <option value='sg-1'>sg-1</option>
+            <option value='us-1'>us-1</option>
+        </select>
+    </div>
+    <div class="form-tips">Tip: You can also specify the region with &lt;msg.payload.region&gt;.</div>
+    
+    <div class="form-row"></div>
+    <hr></hr>
+    <h3>Proxy (Optional)</h3>
+
+    <div class="form-row">
+        <label for="node-config-input-proxyAddress"><i class="icon-tag"></i> Address</label>
+        <input type="text" id="node-config-input-proxyAddress" placeholder="x.y.z">
+    </div>
+    <div class="form-tips">Tip: can be an IP Address or FQDN.</div>
+    
+    <div class="form-row"></div>
+    <div class="form-row">
+        <label for="node-config-input-proxyPort"><i class="icon-tag"></i> Port</label>
+        <input type="text" id="node-config-input-proxyPort" placeholder="80">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-proxyProtocol"><i class="icon-tag"></i> Address</label>
+        <input type="text" id="node-config-input-proxyProtocol" placeholder="https">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-config-input-proxyUsername"><i class="fa fa-user"></i>
+        <span data-i18n="node-red:common.label.secret">Username</span></label>
+        <input type="text" id="node-config-input-proxyUsername">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-proxyPassword"><i class="fa fa-lock"></i>
+        <span data-i18n="node-red:common.label.secret">Password</span></label>
+        <input type="password" id="node-config-input-proxyPassword">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="cloudone service">

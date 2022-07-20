@@ -1,6 +1,6 @@
 {
   "name": "@trendmicro-cloudone/node-red-core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Trend Micro CloudOne core nodes for Node-RED",
   "main": "index.js",
   "scripts": {

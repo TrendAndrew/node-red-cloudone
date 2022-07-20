@@ -11,7 +11,11 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             node._cloudone.call(node, {
                 method: "GET",
-                uri: "https://integrations.{{region}}.cloudone.trendmicro.com/api/integrations",
+                uri: {
+                    service: 'integrations',
+                    region: (msg && msg.payload && msg.payload.region) || undefined,
+                    path: "integrations"
+                },
                 headers: {
                     'Api-Version': 'v1'
                 }

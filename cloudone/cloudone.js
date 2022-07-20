@@ -11,6 +11,13 @@ module.exports = function(RED) {
         const region = serverNode.region || 'us-1';
         const server = serverNode.server;
 
+        const proxyAddress = serverNode.proxyAddress;
+        const proxyProtocol = serverNode.proxyProtocol || 'https';
+        const proxyPort = serverNode.proxyPort || '80';
+        const proxyUsername = serverNode.credentials.proxyUsername;
+        const proxyPassword = serverNode.credentials.proxyPassword;
+
+
         serverNode.call = function(node, params, onError, onSuccess) {
             if (!apikey) {
                 if (onError) {
@@ -25,18 +32,33 @@ module.exports = function(RED) {
             //     callback(new Error('Missing Region'));
             //     return;
             // }
+            
+            params.uri.region = params.uri.region || region;
+            const uri = Mustache.render(
+                (server && (server.length > 0) ? server : 'https://{{service}}.{{region}}.cloudone.trendmicro.com/api/') + '{{{path}}}',
+                params.uri // allow the caller to override things (including the region)
+            );
 
             const callParams = Object.assign({}, params, {
-                uri: Mustache.render(params.uri, {
-                    server: server,
-                    region: region
-                }),
+                uri: uri,
                 json: true,
                 headers: Object.assign({}, params.headers || {}, {
-                    'Authorization': 'ApiKey ' + apikey
+                    'Authorization': 'ApiKey ' + apikey//,
+                    //'Content-Type': 'application/vnd.api+json'
                 })
-            })
+            });
 
+            if (proxyAddress) {
+                callParams.proxy = Mustache.render('{{protocol}}://{{username}}:{{password}}@{{address}}:{{port}}', {
+                    protocol: proxyProtocol,
+                    address: proxyAddress,
+                    username: proxyUsername,
+                    password: proxyPassword,
+                    port: proxyPort
+                });
+            }
+
+            console.log(callParams);
             serverNode.debug(callParams);
             util.apicall(node, callParams, onError, onSuccess);
         }
