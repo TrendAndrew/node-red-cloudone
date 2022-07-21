@@ -17,7 +17,7 @@ Provides service configuration node and "Integrations" api functionality nodes.
 
 For each "service" you create a single configuration node that provides the reusable connection for all your API calls to Cloud One.
 
-![Configuration Node](https://github.com/TrendAndrew/node-red-core/raw/main/images/confignode.png "Configuration Node")
+![Configuration Node](https://github.com/TrendAndrew/node-red-cloudone/tree/main/images/confignode.png "Configuration Node")
 
 This module also includes a couple of nodes for "Integrations" api calls, but for each specific CloudOne capability, you also install the appropriate nodes:
 
@@ -37,7 +37,7 @@ To GET all computers, use the "List Computers" node.
 
 The nodes take input msgs to trigger the api calls, the msg.payload can typically have arguments to override the node settings, for instance you can pass in API arguments such as query strings, account ids, etc.
 
-![List Computers Flow Example](https://github.com/TrendAndrew/node-red-cloudone/raw/main/images/example-listcomputers.png "List Computers Flow Example")
+![List Computers Flow Example](https://github.com/TrendAndrew/node-red-cloudone/tree/main/images/example-listcomputers.png "List Computers Flow Example")
 
 The node will provide status on the call and on the response content summary (in this example, how many computers were found).
 
@@ -49,7 +49,7 @@ I realise the majority of enterprise installations will be working behind a prox
 
 The service node provides a proxy functionality (still in beta).
 
-![Proxy Settings](https://github.com/TrendAndrew/node-red-core/raw/main/images/proxysettings.png "Proxy Settings")
+![Proxy Settings](https://github.com/TrendAndrew/node-red-cloudone/tree/main/images/proxysettings.png "Proxy Settings")
 
 Try the built-in proxy capability first for the main service config node, but it may requires a few extra steps for installation of node-red, node-red plugins and connection. But this these nodes have been installed successfully in quite a few large organisations with strict security with no issues. Just take some time to work out the extra steps required as a vanilla node-red installation may not readily support deployment within your environment without a little extra work.
 
