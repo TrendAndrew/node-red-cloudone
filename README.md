@@ -33,13 +33,13 @@ This module also includes a couple of nodes for "Integrations" api calls, but fo
 
 ## Flow examples
 
-To GET all computers, use the "List Computers" node.
+To GET all integrations, use the "List Integrations" node.
 
 The nodes take input msgs to trigger the api calls, the msg.payload can typically have arguments to override the node settings, for instance you can pass in API arguments such as query strings, account ids, etc.
 
-![List Computers Flow Example](https://github.com/TrendAndrew/node-red-cloudone/raw/main/images/example-listcomputers.png "List Computers Flow Example")
+![List Integrations](https://github.com/TrendAndrew/node-red-cloudone/raw/main/images/example-listintegrations.png "List Integrations Flow Example")
 
-The node will provide status on the call and on the response content summary (in this example, how many computers were found).
+The node will provide status on the call and on the response content summary (in this example, how many integrations were found).
 
 The outgoing response msg includes the api output as the msg.payload.
 
